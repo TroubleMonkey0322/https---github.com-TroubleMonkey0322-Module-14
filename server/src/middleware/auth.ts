@@ -6,7 +6,8 @@ interface JwtPayload {
 }
 
 export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
- 
+
+   
   const token = req.header('Authorization')?.replace('Bearer ', ''); 
   
   if (!token) {
@@ -14,7 +15,7 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
   }
 
   
-  jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key', (err, decoded) => {
+  jwt.verify(token, process.env.JWT_SECRET || 'ilovepickles45', (err, decoded) => {
     if (err) {
       return res.status(403).json({ message: 'Invalid or expired token.' });
     }
